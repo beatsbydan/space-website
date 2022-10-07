@@ -10,9 +10,9 @@ It also involves the use of custom css properties contained in the root.
 /* Custom Properties */
 :root{
     /* colors */
-    --darkcolor:hsl(230 35% 7% /.5);
-    --lightcolor:hsl(231 77% 90%);
-    --white:hsl(0 0 100%);
+    --darkcolor: 230 35% 7%;
+    --lightcolor: 231 77% 90%;
+    --white: 0 0 100%;
 
     /* font sizes */
     --size-900: 9.375rem;
@@ -98,30 +98,30 @@ input, button, textarea, select{
 
 /* background */
 .bg-dark{
-    background-color: var(--darkcolor);
+    background-color: hsl( var(--darkcolor) );
 }
 .bg-accent{
-    background-color: var(--lightcolor );
+    background-color: hsl(var(--lightcolor ));
 }
 .bg-white{
-    background-color: var(--white);
+    background-color: hsl( var(--white) );
 }
 
 /* texts */
 .text-dark{
-    color: var(--darkcolor);
+    color: hsl( var(--darkcolor) );
 }
 .text-accent{
-    color: var(--lightcolor );
+    color: hsl(var(--lightcolor ));
 }
 .text-white{
-    color: var(--white);
+    color: hsl( var(--white) );
 }
 
 /* typography */
-.ff-serif { font-family: var(--ff-serif); } 
-.ff-sans-cond { font-family: var(--ff-sans-cond); } 
-.ff-sans-normal { font-family: var(--ff-sans-normal); } 
+.ff-serif { font-family: var(--ff-1-serif); } 
+.ff-sans-cond { font-family: var(--ff-2-serif); } 
+.ff-sans-normal { font-family: var(--ff-3-serif); } 
 
 .letter-spacing-1 { letter-spacing: 4.75px; } 
 .letter-spacing-2 { letter-spacing: 2.7px; } 
@@ -129,14 +129,14 @@ input, button, textarea, select{
 
 .uppercase { text-transform: uppercase; }
 
-.fs-900 { font-size: var(--fs-900); }
-.fs-800 { font-size: var(--fs-800); }
-.fs-700 { font-size: var(--fs-700); }
-.fs-600 { font-size: var(--fs-600); }
-.fs-500 { font-size: var(--fs-500); }
-.fs-400 { font-size: var(--fs-400); }
-.fs-300 { font-size: var(--fs-300); }
-.fs-200 { font-size: var(--fs-200); }
+.fs-900 { font-size: var(--size-900); }
+.fs-800 { font-size: var(--size-800); }
+.fs-700 { font-size: var(--size-700); }
+.fs-600 { font-size: var(--size-600); }
+.fs-500 { font-size: var(--size-500); }
+.fs-400 { font-size: var(--size-400); }
+.fs-300 { font-size: var(--size-300); }
+.fs-200 { font-size: var(--size-200); }
 
 .fs-900,
 .fs-800,
@@ -162,6 +162,110 @@ input, button, textarea, select{
 .numbered-titles span {
     margin-right: .5em;
     font-weight: 700;
-    color: var(--white);
+    color: hsl( var(--white) );
     opacity: .25;
+}
+
+/*Components*/
+.large-explore-button{
+    display: grid;
+    position: relative;
+    place-items: center;
+    aspect-ratio: 1;
+    z-index: 1;
+    border-radius: 50%;
+    text-decoration: none;
+    padding: 0 2em;
+}
+.large-explore-button::after{
+    content: '';
+    background-color: hsl(var(--white));
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: -1;
+    position: absolute;
+}
+.large-explore-button::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: hsl( var(--white) / .15);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+
+.large-explore-button:hover::after,
+.large-explore-button:focus::after {
+    opacity: 1;
+    transform: scale(1.5);
+}
+
+.primary-navigation {
+    --gap: 8rem;
+    list-style: none;
+    --underline-gap:2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.primary-navigation a {
+    text-decoration: none;
+}
+
+.primary-navigation a > span {
+    font-weight: 700;
+    margin-right: .5em;
+}
+
+.underline-indicators > * {
+    border: 0;
+    cursor: pointer;
+    padding: var(--underline-gap, 1rem) 0;
+    border-bottom: .2rem solid hsl( var(--white) / 0 );
+}
+
+.underline-indicators > *:hover, .underline-indicators > *:focus {
+    border-color: hsl( var(--white) / .5);
+}
+
+.underline-indicators > .active, .underline-indicators > [aria-selected="true"]{
+    border-color: hsl( var(--white) / 1);
+    color: hsl( var(--white) / 1);
+}
+
+.tab-list{
+    --gap:2rem;
+}
+
+.dot-indicators > * {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    padding: .5em;
+    background-color: hsl( var(--white) / .25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
+    background-color: hsl( var(--white) / .5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+    background-color: hsl( var(--white) / 1); 
+}
+
+.number-buttons > *{
+    cursor: pointer;
+    border: 2px solid hsl( var(--white) / .25);
+    border-radius: 50%;
+    padding: .8em;
+    background-color: transparent;
+}
+
+.number-buttons >*:hover, .number-buttons >*:focus, .number-buttons > [aria-selected="true"]{
+    border-color: hsl( var(--white) );
 }
